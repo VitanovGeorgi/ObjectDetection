@@ -1,0 +1,5 @@
+model: "vgg16" # Name of the model
+tag: 'flyability' # Model's tag for wandb logging
+save_model_path: "experiments/saved_models" # Path to save the model
+load_model_path: "" # Path to load the model
+

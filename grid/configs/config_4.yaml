@@ -1,0 +1,33 @@
+random_seed: 42
+output_path: experiments/results
+experiment_name: baseline
+save_model: true
+inference: false
+demo: false
+data:
+  name: probe_images
+  root_dir: datasets/probe_images
+  batch_size: 24
+  num_workers: 6
+model:
+  model: custom_cnn
+  tag: flyability
+  num_classes: 2
+  load_model_path: ''
+optimizer:
+  lr: 0.1
+  weight_decay: 0
+  optimizer: adam
+  decrease_every: 150
+  lr_divisor: 2
+training:
+  epochs: 20
+  validate_per_epoch: 2
+  loss: mse
+  apply_augmentation: false
+logging:
+  project: Flybility
+  mode: online
+distributed:
+  use_distributed: false
+  backend: nccl

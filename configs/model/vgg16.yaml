@@ -1,0 +1,4 @@
+defaults: 
+  - model_defaults # Inherit model_defaults arguments
+
+model: "vgg16" # Name of the model

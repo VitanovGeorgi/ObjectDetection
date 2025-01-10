@@ -1,0 +1,43 @@
+random_seed: 42 # Random seed for reproducibility
+output_path: "experiments/results" # Path to save the model
+experiment_name: "baseline" # Name of the experiment
+save_model: True # Whether to save the model [True, False]
+inference: False # Whether to perform inference [True, False]
+demo: False # Whether to run the train function for demo [True, False]
+
+data:
+  name: "probe_images" # Name of the dataset
+  root_dir: "datasets/probe_images" # Path to the dataset
+  batch_size: 24 # Batch size for the data loader
+  num_workers: 6 # Number of workers for the data loader
+
+
+model:
+  model: ["vgg16", "custom_cnn"] # Name of the model ["vgg16", "custom_cnn", "fasterrcnn_resnet50_fpn"]
+  tag: 'flyability' # Model's tag for wandb logging
+  num_classes: 2 # Number of classes in the dataset (needed for fast RCNN model)
+  load_model_path: "" # Path to load the model
+
+
+optimizer:
+  lr: [0.1, 0.01, 0.001] # Learning rate for the optimizer
+  weight_decay: 0 # Weight decay for the optimizer
+  optimizer: "adam" # Name of the optimizer ["adam", "sgd"]
+  decrease_every: 150 # Frequency of the learning rate decrease
+  lr_divisor: 2 # Rate of the learning rate decrease
+
+training:
+  epochs: 20 # Number of epochs for training
+  validate_per_epoch: 2 # Periodicity to evaluate the model
+  loss: "mse" # Name of the loss function, which may correpond to the model as they have custom loss functions ["vgg16", "fasterrcnn_resnet50_fpn", "mse", "iou"]. ios wasn't meant for fasterrcnn_resnet50_fpn
+  apply_augmentation: False # Whether to apply data augmentation [True, False]
+
+logging:
+  project: "Flybility" # Name of the wandb project
+  mode: "online" # Whether to log to wand [online, offline, disabled]
+
+
+distributed:
+  use_distributed: False # Whether to use distributed training [True, False]
+  backend: "nccl" # Backend for distributed training ["nccl", "gloo"]
+  

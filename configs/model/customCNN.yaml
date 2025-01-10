@@ -1,0 +1,4 @@
+defaults: 
+  - model_defaults # Inherit model_defaults arguments
+
+model: "custom_cnn" # Name of the model

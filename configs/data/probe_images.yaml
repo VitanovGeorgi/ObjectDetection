@@ -1,0 +1,4 @@
+name: "probe_images"
+root_dir: "datasets/probe_images"
+batch_size: 24
+num_workers: 2
